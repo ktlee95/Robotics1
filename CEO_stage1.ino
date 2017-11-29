@@ -96,22 +96,13 @@ void loop()
   // constant of 6, which should work decently for many Zumo motor choices.
   // You probably want to use trial and error to tune these constants for
   // your particular Zumo and line course.
-  int speedDifference = 0.15 * error + 6 * (error - lastError);
+  int speedDifference = 0.15 * error + 40 * (error - lastError);
   
   lastError = error;
   
   // Get individual motor speeds.  The sign of speedDifference
   // determines if the robot turns left or right.
   
-
-  if(position>2250 && position < 2750){
-    m1Speed = MAX_SPEED;
-    m2Speed = MAX_SPEED;
-  }else if(position > 4000 || position < 1000){
-    speedDifference = 0.28 * error + 6 * (error - lastError);
-    m1Speed = MAX_SPEED + speedDifference;
-    m2Speed = MAX_SPEED - speedDifference;
-  }
 //  if(position>2000 && position < 3000){
 //    m1Speed = MAX_SPEED;
 //    m2Speed = MAX_SPEED;
