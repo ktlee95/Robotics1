@@ -34,18 +34,16 @@ const int MAX_SPEED = 400;
 
 void setup()
 {
+  motors.setSpeeds(0,0);
   // Play a little welcome song
   buzzer.play(">g32>>c32");
 
   // Initialize the reflectance sensors module
   reflectanceSensors.init();
-
+  
   // Wait for the user button to be pressed and released
-  button.waitForButton();
-
-  // Turn on LED to indicate we are in calibration mode
-  pinMode(13, OUTPUT);
-  digitalWrite(13, HIGH);
+//  THIS LINE WAITFORBUTTON IS COMMENTED OUT BECAUSE AFTER INTEGRATE WITH PIXY IT CANNOT CALL THIS FUNCTION
+//  button.waitForButton();
 
   // Wait 1 second and then begin automatic sensor calibration
   // by rotating in place to sweep the sensors over the line
@@ -70,12 +68,13 @@ void setup()
   buzzer.play(">g32>>c32");
 
   // Wait for the user button to be pressed and released
-  button.waitForButton();
+//  button.waitForButton();
 
   // Play music and wait for it to finish before we start driving.
-  buzzer.play("L16 cdegreg4");
+  
 //  while(buzzer.isPlaying());
-  delay(1000);
+  delay(3000);
+  buzzer.play("L16 cdegreg4");
 }
 
 void loop()
