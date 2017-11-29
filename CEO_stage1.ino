@@ -18,7 +18,6 @@
 #include <ZumoBuzzer.h>
 #include <Pushbutton.h>
 
-
 ZumoBuzzer buzzer;
 ZumoReflectanceSensorArray reflectanceSensors;
 ZumoMotors motors;
@@ -99,23 +98,9 @@ void loop()
   int speedDifference = 0.15 * error + 40 * (error - lastError);
   
   lastError = error;
+  m1Speed = MAX_SPEED + speedDifference;
+  m2Speed = MAX_SPEED - speedDifference;
   
-  // Get individual motor speeds.  The sign of speedDifference
-  // determines if the robot turns left or right.
-  
-//  if(position>2000 && position < 3000){
-//    m1Speed = MAX_SPEED;
-//    m2Speed = MAX_SPEED;
-//  }else if(position>4000){
-//    m1Speed = MAX_SPEED;
-//    m2Speed = -MAX_SPEED;
-//  }else if(position<1000){
-//    m1Speed = -MAX_SPEED;
-//    m2Speed = MAX_SPEED;
-//  }else{
-//    m1Speed = MAX_SPEED + speedDifference;
-//    m2Speed = MAX_SPEED - speedDifference;
-//  }
   // Here we constrain our motor speeds to be between 0 and MAX_SPEED.
   // Generally speaking, one motor will always be turning at MAX_SPEED
   // and the other will be at MAX_SPEED-|speedDifference| if that is positive,
