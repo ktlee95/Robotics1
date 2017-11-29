@@ -103,27 +103,28 @@ void loop()
   // Get individual motor speeds.  The sign of speedDifference
   // determines if the robot turns left or right.
   
-  if(position>2000 && position < 3000){
+
+  if(position>2250 && position < 2750){
     m1Speed = MAX_SPEED;
     m2Speed = MAX_SPEED;
-  }else if(position>4000){
-    m1Speed = MAX_SPEED;
-    m2Speed = -MAX_SPEED;
-  }else if(position<1000){
-    m1Speed = -MAX_SPEED;
-    m2Speed = MAX_SPEED;
-//  if(position>2250 && position < 2750){
-//    m1Speed = MAX_SPEED;
-//    m2Speed = MAX_SPEED;
-//  }else if(position > 4000 || position < 1000){
-//    speedDifference = 0.28 * error + 6 * (error - lastError);
-//    m1Speed = MAX_SPEED + speedDifference;
-//    m2Speed = MAX_SPEED - speedDifference;
-//  }
-  }else{
+  }else if(position > 4000 || position < 1000){
+    speedDifference = 0.28 * error + 6 * (error - lastError);
     m1Speed = MAX_SPEED + speedDifference;
     m2Speed = MAX_SPEED - speedDifference;
   }
+//  if(position>2000 && position < 3000){
+//    m1Speed = MAX_SPEED;
+//    m2Speed = MAX_SPEED;
+//  }else if(position>4000){
+//    m1Speed = MAX_SPEED;
+//    m2Speed = -MAX_SPEED;
+//  }else if(position<1000){
+//    m1Speed = -MAX_SPEED;
+//    m2Speed = MAX_SPEED;
+//  }else{
+//    m1Speed = MAX_SPEED + speedDifference;
+//    m2Speed = MAX_SPEED - speedDifference;
+//  }
   // Here we constrain our motor speeds to be between 0 and MAX_SPEED.
   // Generally speaking, one motor will always be turning at MAX_SPEED
   // and the other will be at MAX_SPEED-|speedDifference| if that is positive,
